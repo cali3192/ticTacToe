@@ -1,0 +1,72 @@
+// variables
+$darkestblue: #0b032d;
+$lightestgray: #efeef7;
+$lightpink: #ffb997;
+$lightblue: #6a81a2;
+$almostblack: #0d0809;
+
+body {
+  background: $darkestblue;
+}
+
+.container {
+  font-family: sans-serif;
+  color: $lightblue;
+  width: 70%;
+  height: 450px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: $lightestgray;
+}
+
+#right {
+  // float: center;
+  // width: 100px;
+  // margin: 30px;
+  padding: 20px;
+}
+
+.box {
+  width: 80px;
+  height: 80px;
+  border: 1px solid black;
+  display: inline-block;
+  color: black;
+  font-family: sans-serif;
+  font-size: 50px;
+
+  // to center the x's and o's
+  line-height: 80px;
+}
+
+.xbox {
+  width: 80px;
+  height: 80px;
+  border: 1px solid black;
+  display: inline-block;
+  color: black;
+  font-family: sans-serif;
+  font-size: 50px;
+  background: red;
+
+  // to center the x's and o's
+  line-height: 80px;
+}
+
+.board {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 250px;
+  padding: 20px;
+  // background: $lightpink;
+}
+
+.submit {
+  background: $lightpink;
+  padding: 5px;
+  margin: 10px;
+}
+
+.player {
+  margin-right: 30px;
+}
