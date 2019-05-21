@@ -25812,11 +25812,11 @@ function (_React$Component) {
       }, _react.default.createElement("input", {
         type: "radio",
         name: "player",
-        value: "x"
+        value: "X"
       }), " PLAYER X"), _react.default.createElement("label", null, _react.default.createElement("input", {
         type: "radio",
         name: "player",
-        value: "o"
+        value: "O"
       }), " PLAYER O"), _react.default.createElement("br", null), _react.default.createElement("input", {
         className: "submit",
         type: "submit",
@@ -25830,7 +25830,79 @@ function (_React$Component) {
 
 var _default = Player;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"App.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/PlayerStatus.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Player = _interopRequireDefault(require("./Player.jsx"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Status =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Status, _React$Component);
+
+  function Status(props) {
+    var _this;
+
+    _classCallCheck(this, Status);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Status).call(this, props));
+    _this.state = {//
+    };
+    return _this;
+  }
+
+  _createClass(Status, [{
+    key: "handleSetPlayer",
+    value: function handleSetPlayer(e) {
+      this.props.setPlayer(e);
+      console.log("status, looking at props => ", this.props);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return this.props.player ? "Player ".concat(this.props.player, "'s turn") : _react.default.createElement(_Player.default, {
+        player: function player(e) {
+          return _this2.handleSetPlayer(e);
+        }
+      });
+    }
+  }]);
+
+  return Status;
+}(_react.default.Component);
+
+var _default = Status;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Player.jsx":"components/Player.jsx"}],"App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25842,7 +25914,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _Player = _interopRequireDefault(require("./components/Player.jsx"));
+var _PlayerStatus = _interopRequireDefault(require("./components/PlayerStatus.jsx"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25933,15 +26005,13 @@ function (_React$Component) {
           newBoard[index] = this.state.player;
           this.setState({
             board: newBoard,
-            player: this.state.player === "x" ? "o" : "x"
+            player: this.state.player === "X" ? "O" : "X"
           });
         } // let newPlayer = this.state.player === "x" ? "o" : "x";
 
 
         this.checkWinner();
-      } // console.log(e);
-      // console.log(e.target);
-
+      }
     }
   }, {
     key: "setPlayer",
@@ -25971,11 +26041,6 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      var status = this.state.player ? "Player ".concat(this.state.player, "'s turn") : _react.default.createElement(_Player.default, {
-        player: function player(e) {
-          return _this3.setPlayer(e);
-        }
-      });
       return _react.default.createElement("div", {
         className: "container"
       }, _react.default.createElement("h1", null, "Tic Tac Toe App"), _react.default.createElement("div", {
@@ -25984,7 +26049,12 @@ function (_React$Component) {
       }, this.renderBoxes()), _react.default.createElement("div", {
         className: "player1",
         id: "right"
-      }, status));
+      }, _react.default.createElement(_PlayerStatus.default, {
+        player: this.state.player,
+        setPlayer: function setPlayer(e) {
+          _this3.setPlayer(e);
+        }
+      })));
     }
   }]);
 
@@ -25993,7 +26063,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/Player.jsx":"components/Player.jsx"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/PlayerStatus.jsx":"components/PlayerStatus.jsx"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {

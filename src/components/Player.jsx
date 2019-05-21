@@ -1,3 +1,5 @@
+// This component is responsible for choosing a player on the board
+
 import React from "react";
 
 class Player extends React.Component {
@@ -13,10 +15,10 @@ class Player extends React.Component {
     return (
       <form onSubmit={e => this.handleForm(e)}>
         <label className="player">
-          <input type="radio" name="player" value="x" /> PLAYER X
+          <input type="radio" name="player" value="X" /> PLAYER X
         </label>
         <label>
-          <input type="radio" name="player" value="o" /> PLAYER O
+          <input type="radio" name="player" value="O" /> PLAYER O
         </label>
         <br />
         <input className="submit" type="submit" value="start" />

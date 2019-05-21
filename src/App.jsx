@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Player from "./components/Player.jsx";
+
+import Status from "./components/PlayerStatus.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -58,16 +59,13 @@ class App extends React.Component {
         newBoard[index] = this.state.player;
         this.setState({
           board: newBoard,
-          player: this.state.player === "x" ? "o" : "x"
+          player: this.state.player === "X" ? "O" : "X"
         });
       }
       // let newPlayer = this.state.player === "x" ? "o" : "x";
 
       this.checkWinner();
     }
-
-    // console.log(e);
-    // console.log(e.target);
   }
 
   setPlayer(player) {
@@ -84,12 +82,6 @@ class App extends React.Component {
   }
 
   render() {
-    let status = this.state.player ? (
-      `Player ${this.state.player}'s turn`
-    ) : (
-      <Player player={e => this.setPlayer(e)} />
-    );
-
     return (
       <div className="container">
         <h1>Tic Tac Toe App</h1>
@@ -98,7 +90,14 @@ class App extends React.Component {
           {this.renderBoxes()}
         </div>
         <div className="player1" id="right">
-          {status}
+          {/* {status} */}
+          {/* My Code */}
+          <Status
+            player={this.state.player}
+            setPlayer={e => {
+              this.setPlayer(e);
+            }}
+          />
         </div>
       </div>
     );
