@@ -25873,7 +25873,7 @@ function (_React$Component) {
     _classCallCheck(this, Status);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Status).call(this, props));
-    _this.state = {//
+    _this.state = {// nothing needs to go here, but this state needs to stay
     };
     return _this;
   }
@@ -25885,15 +25885,24 @@ function (_React$Component) {
       console.log("status, looking at props => ", this.props);
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "renderWinner",
+    value: function renderWinner() {
       var _this2 = this;
 
-      return this.props.player ? "Player ".concat(this.props.player, "'s turn") : _react.default.createElement(_Player.default, {
-        player: function player(e) {
-          return _this2.handleSetPlayer(e);
-        }
-      });
+      if (this.props.winner) {
+        return _react.default.createElement("h1", null, "The winner is player ", this.props.winner, " ");
+      } else {
+        return this.props.player ? "Player ".concat(this.props.player, "'s turn") : _react.default.createElement(_Player.default, {
+          player: function player(e) {
+            return _this2.handleSetPlayer(e);
+          }
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("span", null, this.renderWinner());
     }
   }]);
 
@@ -25959,7 +25968,8 @@ function (_React$Component) {
       board: Array(9).fill(null),
       player: null,
       winner: null,
-      moves: []
+      moves: [],
+      winningLine: null
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.checkMatch = _this.checkMatch.bind(_assertThisInitialized(_this));
@@ -25981,13 +25991,14 @@ function (_React$Component) {
             b = _winLines$index[1],
             c = _winLines$index[2];
 
-        var checkBoard = this.state.board;
+        var checkBoard = this.state.board; // console.log("a =>", a, "b =>", b, "c =>", c, "\n\n");
 
         if ( // we need this first condition otherwise all null values will read as
         // meeting the condition and an alert will popup
         !this.state.winner && checkBoard[a] && checkBoard[a] === checkBoard[b] && checkBoard[a] === checkBoard[c]) {
           this.setState({
-            winner: this.state.player
+            winner: this.state.player,
+            winLines: this.index
           });
           alert("Player ".concat(this.state.player, " wins"));
         }
@@ -26053,7 +26064,8 @@ function (_React$Component) {
         player: this.state.player,
         setPlayer: function setPlayer(e) {
           _this3.setPlayer(e);
-        }
+        },
+        winner: this.state.winner
       })));
     }
   }]);

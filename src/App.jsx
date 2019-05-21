@@ -10,7 +10,8 @@ class App extends React.Component {
       board: Array(9).fill(null),
       player: null,
       winner: null,
-      moves: []
+      moves: [],
+      winningLine: null
     };
     this.handleClick = this.handleClick.bind(this);
     this.checkMatch = this.checkMatch.bind(this);
@@ -34,6 +35,7 @@ class App extends React.Component {
     for (let index = 0; index < winLines.length; index++) {
       const [a, b, c] = winLines[index];
       let checkBoard = this.state.board;
+      // console.log("a =>", a, "b =>", b, "c =>", c, "\n\n");
       if (
         // we need this first condition otherwise all null values will read as
         // meeting the condition and an alert will popup
@@ -43,7 +45,8 @@ class App extends React.Component {
         checkBoard[a] === checkBoard[c]
       ) {
         this.setState({
-          winner: this.state.player
+          winner: this.state.player,
+          winLines: this.index
         });
         alert(`Player ${this.state.player} wins`);
       }
@@ -97,6 +100,7 @@ class App extends React.Component {
             setPlayer={e => {
               this.setPlayer(e);
             }}
+            winner={this.state.winner}
           />
         </div>
       </div>
