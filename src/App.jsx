@@ -76,11 +76,11 @@ class App extends React.Component {
   }
 
   renderBoxes() {
-    return this.state.board.map((box, index) => {
+    return this.state.board.map((box, index) => (
       <div className="box" key={index} onClick={() => this.handleClick(index)}>
         {box}
-      </div>;
-    });
+      </div>
+    ));
   }
 
   render() {

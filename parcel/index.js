@@ -25957,7 +25957,7 @@ function (_React$Component) {
       var _this2 = this;
 
       return this.state.board.map(function (box, index) {
-        _react.default.createElement("div", {
+        return _react.default.createElement("div", {
           className: "box",
           key: index,
           onClick: function onClick() {
@@ -26108,7 +26108,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51004" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50773" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
