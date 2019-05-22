@@ -28,7 +28,7 @@ const express = require("express"),
 //   response.send(JSON.stringify(`Hello world`));
 // });
 
-app.use(express.static(__dirname + "/parcel"));
+app.use(express.static(__dirname + "/dist"));
 
 //Binding the server to a port(3000)
 const port = 3000;

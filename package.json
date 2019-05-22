@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon node index.js",
-    "dev": "parcel src/index.html -d parcel src/index.js"
+    "dev": "parcel src/index.html parcel src/index.js"
   },
   "keywords": [],
   "author": "",
