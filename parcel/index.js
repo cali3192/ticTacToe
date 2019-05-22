@@ -26160,7 +26160,6 @@ require("./styles/main.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { ayo } from "./ayo";
 _reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById("app")); // document.querySelector("h1").textContent = ayo("AJA IN THE HAUS");
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App.jsx":"App.jsx","./styles/main.scss":"styles/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -26190,7 +26189,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50773" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51247" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

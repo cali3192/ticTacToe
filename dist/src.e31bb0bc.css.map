@@ -1,1 +1,0 @@
-{"version":3,"sources":["styles/main.scss"],"names":[],"mappings":"AAEA;EACE,YAHI;;;AAMN;EACE","file":"src.e31bb0bc.css","sourceRoot":"../src","sourcesContent":["$sup: yellow;\n\nbody {\n  background: $sup;\n}\n\nh1 {\n  text-align: center;\n}\n"]}

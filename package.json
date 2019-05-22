@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon node index.js",
     "dev": "parcel src/index.html -d parcel src/index.js"
   },
   "keywords": [],
@@ -17,6 +18,8 @@
     "babel-preset-react": "^6.24.1"
   },
   "dependencies": {
+    "express": "^4.17.0",
+    "nodemon": "^1.19.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
