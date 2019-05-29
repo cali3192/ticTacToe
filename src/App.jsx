@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import Status from "./components/PlayerStatus.jsx";
+import Box from "./components/Box.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -62,6 +63,7 @@ class App extends React.Component {
         newBoard[index] = this.state.player;
         this.setState({
           board: newBoard,
+          // moves: moves.push(this.state.player),
           player: this.state.player === "X" ? "O" : "X"
         });
       }
